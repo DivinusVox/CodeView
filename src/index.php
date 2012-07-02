@@ -1,6 +1,9 @@
 <?php 
 	include('classes.php'); 
-	// OAuth token verification 
+	// OAuth token verification
+	// Step 1: Unlimited access - DONE
+	// Step 2: Restricted Unlimited Access
+	// Step 3: Restricted Selective Access
 ?>
 
 <!DOCTYPE html>
@@ -9,10 +12,15 @@
 <html>
 <head>
 	<title>PurpleState Code Viewer</title>
-	<link href="google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
+	<link href="resources/lib/google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
 	<link href="styles.css" type="text/css" rel="stylesheet" />
-	<script type="text/javascript" src="google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="resources/lib/google-code-prettify/prettify.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+	<script type="text/javascript"> 
+					function toggleCode(selector){
+						$( selector ).toggle();
+					}
+	</script>
 </head>
 
 <body onload="prettyPrint();">
@@ -25,8 +33,8 @@
 			
 				
 			// Test values
-			$authenticated = false;
-			$p1 = "Test 1";
+			$authenticated = true;
+			$p1 = "Test_1";
 			// indentation is picked up by pre tags
 			$p1c = "function foo(){
 	alert('Testing stuff');
@@ -34,7 +42,7 @@
 	dance('trot');
 } // end foo()";
 
-			$p2 = "Test 2";
+			$p2 = "Test_2";
 			// indentation is picked up by pre tags
 			$p2c = "function foo(){
 	alert('Testing stuff again');
@@ -67,11 +75,13 @@
 				// testing values
 				$selectedProject = $projects[$p1];
 				
+				
+				
 				// foreach file in selected project, display name and content
 				foreach ($selectedProject->files as $file){
-					echo "<h3 class='filename'> $file->name </h3>";
+					echo "<h3 class='filename' onclick='toggleCode($file->name)'> $file->name </h3>";
 					
-					echo '<pre class="prettyprint linenums filecontent">';
+					echo "<pre class='prettyprint linenums filecontent ' id='$file->name' style='display:none;'>";
 						echo $file->content;
 					echo '</pre>';
 					
@@ -89,7 +99,7 @@
 
 		<div id='footer'>
 			<a href='http://www.purplestate.info/contact/'><h4>Contact Support</h4></a> <!-- contact/feedback dropdown -->
-		</div> <!-- end of footer -- >
+		</div> <!-- end of footer -->
 	</div> <!-- end of wrapper -->
 </body>
 </html>
