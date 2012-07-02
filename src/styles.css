@@ -1,1 +1,6 @@
 #wrapper {width: 960px; margin: 25px auto;}
+
+a:link {color: purple;}
+a:active{color: purple;}
+a:visited {color: purple;}
+a:hover {color: black;}

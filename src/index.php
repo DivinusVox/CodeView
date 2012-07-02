@@ -19,6 +19,7 @@
 	<script type="text/javascript"> 
 					function toggleCode(selector){
 						$( selector ).toggle();
+						return false;
 					}
 	</script>
 </head>
@@ -79,7 +80,7 @@
 				
 				// foreach file in selected project, display name and content
 				foreach ($selectedProject->files as $file){
-					echo "<h3 class='filename' onclick='toggleCode($file->name)'> $file->name </h3>";
+					echo "<a href='#' class='filename' onclick='toggleCode($file->name)'><h3> $file->name </h3></a>";
 					
 					echo "<pre class='prettyprint linenums filecontent ' id='$file->name' style='display:none;'>";
 						echo $file->content;
