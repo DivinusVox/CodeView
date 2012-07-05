@@ -56,7 +56,7 @@
 				echo "<p id='showall'>Show/Hide all files.</p>";
 				
 				// testing values
-				$selectedProject = $projects[$p1];
+				//$selectedProject = $projects[$p1];
 				
 				
 				

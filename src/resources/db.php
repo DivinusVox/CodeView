@@ -17,7 +17,7 @@
 	function getProjects()
 	{
 		$connect = connectDB();
-		$result = false;
+		$result;
 		
 		if ($connect){
 			$statement = "SELECT * FROM `projects` WHERE 1";
