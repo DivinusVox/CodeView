@@ -22,7 +22,7 @@
 		if ($connect){
 			$statement = "SELECT * FROM `projects` WHERE 1";
 			
-			$mysql_select_db($db, $connect);
+			$mysql_select_db("codeview", $connect);
 			$result = mysql_query($statement);
 		}
 		
