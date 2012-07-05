@@ -1,5 +1,7 @@
 <?php 
 	include('classes.php'); 
+	include('resources/db.php');
+	include('resources/lib/oauthsimple.php');
 	// OAuth token verification
 	// Step 1: Unlimited access - DONE
 	// Step 2: Restricted Unlimited Access
@@ -16,11 +18,13 @@
 	<link href="styles.css" type="text/css" rel="stylesheet" />
 	<script type="text/javascript" src="resources/lib/google-code-prettify/prettify.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+	
+	<!-- Code Content Toggle -->
 	<script type="text/javascript"> 
-					function toggleCode(selector){
-						$( selector ).toggle();
-						return false;
-					}
+		function toggleCode(selector){
+			$( selector ).toggle();
+			return false;
+		}
 	</script>
 </head>
 
@@ -31,35 +35,13 @@
 		<hr />
 
 		<?php
+			$authenticated = true; // test bool
 			
-				
-			// Test values
-			$authenticated = true;
-			$p1 = "Test_1";
-			// indentation is picked up by pre tags
-			$p1c = "function foo(){
-	alert('Testing stuff');
-	var foo = 'bar';
-	dance('trot');
-} // end foo()";
-
-			$p2 = "Test_2";
-			// indentation is picked up by pre tags
-			$p2c = "function foo(){
-	alert('Testing stuff again');
-	var foo = 'baz';
-	dance('mamba');
-}";
-
-			$projects = array();
-			$projects[$p1] = new Project($p1);
-			$projects[$p1]->addFile($p1, $p1c);
-			//$projects[$p2] = new Project($p2);
-			$projects[$p1]->addFile($p2, $p2c);
-		   
-		   
+			// Fetch authorized projects
 			if ($authenticated) // bool based on token access
 			{
+				$projects = getProjects();
+				
 				// get project list, based on token permissions
 				echo "<p>Select an available project: </p>";
 				echo "<select onchange='selectProject()'>";
