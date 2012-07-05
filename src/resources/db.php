@@ -11,11 +11,13 @@
 		if (!$connect){
 			die("Error connecting to database: " . mysql_error());
 		}
+		
+		return $connect;
 	}
 	
 	function getProjects()
 	{
-		connectDB();
+		$connect = connectDB();
 		
 		if ($connect){
 			$statement = "SELECT * FROM `projects` WHERE 1";
