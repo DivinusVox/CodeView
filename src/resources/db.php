@@ -17,7 +17,7 @@
 	function getProjects()
 	{
 		$connect = connectDB();
-		$db = "codeview";
+		$result = false;
 		
 		if ($connect){
 			$statement = "SELECT * FROM `projects` WHERE 1";
@@ -26,7 +26,7 @@
 			$result = mysql_query($statement);
 		}
 		
-		mysql_close($conmect);
+		mysql_close($connect);
 		
 		return mysql_fetch_array($result);
 	}
