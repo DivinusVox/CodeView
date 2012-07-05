@@ -3,7 +3,6 @@
 	function connectDB()
 	{
 		$host = "localhost";
-		$db = "codeview";
 		$user = "codeview";
 		$pass = "pUpR4YR8eCdvnqEc";
 		$connect = mysql_connect($host, $user, $pass);
@@ -18,6 +17,7 @@
 	function getProjects()
 	{
 		$connect = connectDB();
+		$db = "codeview";
 		
 		if ($connect){
 			$statement = "SELECT * FROM `projects` WHERE 1";
