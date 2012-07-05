@@ -5,7 +5,7 @@
 		$host = "localhost";
 		$db = "codeview";
 		$user = "codeview";
-		$pass = "BsKr6ZyxfEzfYjRA";
+		$pass = "pUpR4YR8eCdvnqEc";
 		$connect = mysql_connect($host, $user, $pass);
 		
 		if (!$connect){
