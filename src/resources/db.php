@@ -1,7 +1,6 @@
 <?php
 	
-	function connectDB()
-	{
+	function connectDB(){
 		$host = "localhost";
 		$user = "codeview";
 		$pass = "pUpR4YR8eCdvnqEc";
@@ -14,8 +13,7 @@
 		return $connect;
 	}
 	
-	function getProjects()
-	{
+	function getProjects(){
 		$connect = connectDB();
 		$result;
 		
@@ -24,10 +22,9 @@
 			
 			//$mysql_select_db("codeview", $connect);
 			$result = mysql_query($statement);
-		}
-		
-		mysql_close($connect);
+			mysql_close($connect);
 		
 		return mysql_fetch_array($result);
+		}
 	}
 ?>
